@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Trade</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/trade.css') }}">
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+{% endblock head %}
+
+{% block body %}
+<div class="container">
+    <h1>Trading Settings</h1>
+    
+    <!-- Trading Bot Control -->
+    <div class="bot-controls">
+        <h2>Trading Bot Control</h2>
+        <button id="start-bot" class="control-button">Start Bot</button>
+        <button id="stop-bot" class="control-button">Stop Bot</button>
+    </div>
+    
+    <!-- Chart Section -->
+    <div class="chart-container">
+        <h2>Chart</h2>
+        <div id="chart"></div>
+    </div>
+    <div>
+        <ul>
+            {% for balance in balances %}
+            <li>{{balance.asset}} : {{balance.free}} </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+<script>
+    // Example JavaScript to handle bot start/stop
+    document.getElementById('start-bot').addEventListener('click', function() {
+        fetch('/start-bot', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => alert(data.message));
+    });
+
+    document.getElementById('stop-bot').addEventListener('click', function() {
+        fetch('/stop-bot', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => alert(data.message));
+    });
+
+    // Example JavaScript to initialize chart
+    const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+        width: 600,
+        height: 400,
+        layout: {
+            textColor: '#e0e0e0',
+        },
+        grid: {
+            borderColor: '#444',
+        },
+        crossHair: {
+            mode: 1,
+        },
+    });
+</script>
+{% endblock body %}

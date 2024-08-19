@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Register</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock head %}
+
+{% block body %}
+<main>
+    <section class="form-container">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Register</button>
+        </form>
+    </section>
+</main>
+
+<script>
+document.getElementById('register-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('{{ url_for("register") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            // Handle successful registration (e.g., redirect or show a success message)
+            window.location.href = '{{ url_for("login") }}'; // Redirect to login page or another page
+        } else {
+            // Handle errors (e.g., display an error message)
+            alert(result.message || 'Registration failed');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while processing your request');
+    }
+});
+</script>
+{% endblock body %}

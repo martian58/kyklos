@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    {% block head %}
+      
+    {% endblock head %}
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-logo">Kyklos</div>
+            <ul class="navbar-menu">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('trade')}}">Trade</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+                <li><a href="{{url_for('profile')}}">Profile</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                {% endif %}
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block body %}
+      
+    {% endblock body %}
+</body>
+</html>

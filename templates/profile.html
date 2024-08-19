@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Profile</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock head %}
+
+{% block body %}
+<main>
+    <section class="profile-page">
+        <h2>User Profile</h2>
+        <form method="post" action="{{ url_for('profile') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}" readonly>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" readonly>
+            
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ user.phone_number }}" readonly>
+
+            <label for="binance_api_key">Binance API Key:</label>
+            <input type="text" id="binance_api_key" name="binance_api_key" value="{{ user.binance_api_key }}">
+            
+            <label for="binance_secret_key">Binance Secret Key:</label>
+            <input type="text" id="binance_secret_key" name="binance_secret_key" value="{{ user.binance_secret_key }}">
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </section>
+</main>
+{% endblock body %}

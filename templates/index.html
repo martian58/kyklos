@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Kyklos | Home</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock head %}
+
+{% block body %}
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Kyklos</h1>
+            <p>Your personal trading assistant with advanced algorithms and real-time insights.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <h2>Features</h2>
+        <div class="feature-card">
+            <h3>Real-time Analysis</h3>
+            <p>Receive up-to-the-minute trading signals and market insights tailored to your strategies.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Custom Strategies</h3>
+            <p>Design and test your trading strategies with our intuitive and powerful tools.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Automated Trading</h3>
+            <p>Automate your trades based on your defined strategies, saving time and optimizing performance.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Kyklos is a cutting-edge trading platform designed to empower traders with advanced technology and insights. Our team is dedicated to providing a seamless and effective trading experience through innovative tools and strategies.</p>
+        <p>Founded by a group of financial technology enthusiasts, Kyklos aims to revolutionize the way traders interact with the market. Our mission is to make trading more accessible, efficient, and successful for everyone, regardless of their experience level.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, suggestions, or need support, feel free to reach out to us. We’re here to help!</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:support@kyklos.com">support@kyklos.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <div class="social-media">
+            <a href="https://twitter.com/qachaqnebi" target="_blank">Twitter</a>
+            <a href="https://facebook.com/yourprofile" target="_blank">Facebook</a>
+            <a href="https://instagram.com/martian" target="_blank">Instagram</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Kyklos. All rights reserved.</p>
+        <ul class="footer-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+{% endblock body %}
