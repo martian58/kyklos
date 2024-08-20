@@ -16,3 +16,5 @@ class MACDStrategy:
         signals['signal'][macd > signal] = 1.0
         signals['signal'][macd < signal] = -1.0
         return signals
+
+        
