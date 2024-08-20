@@ -1,5 +1,5 @@
 from ..utils import calculate_macd
-
+import pandas as pd
 
 class MACDStrategy:
     def __init__(self, short_window=12, long_window=26, signal_window=9):
