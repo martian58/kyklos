@@ -101,11 +101,11 @@ def register_routes(app, db, bcrypt):
             API_KEY = user.binance_api_key
             SECRET_KEY = user.binance_secret_key
 
-            # client = Client(API_KEY,SECRET_KEY)
+            client = Client(API_KEY,SECRET_KEY)
 
-            # kyklos = Kyklos(API_KEY,SECRET_KEY,client)
+            kyklos = Kyklos(API_KEY,SECRET_KEY,client)
 
-            # asset_balance = kyklos.get_asset_balance('BTCUSDT')
+            asset_balance = kyklos.get_asset_balance('BTCUSDT')
             return render_template('trade.html')
         
         elif request.method == 'POST':
