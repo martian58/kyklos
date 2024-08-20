@@ -3,6 +3,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from models import User
 from binance import Client
 
+from kyklos.kyklos import Kyklos
+
 def register_routes(app, db, bcrypt):
 
     @app.route('/')
@@ -99,17 +101,14 @@ def register_routes(app, db, bcrypt):
             API_KEY = user.binance_api_key
             SECRET_KEY = user.binance_secret_key
 
-            client = Client(API_KEY,SECRET_KEY)
+            # client = Client(API_KEY,SECRET_KEY)
 
-            info = client.get_account()
-            return render_template('trade.html', balances=info['balances'])
+            # kyklos = Kyklos(API_KEY,SECRET_KEY,client)
+
+            # asset_balance = kyklos.get_asset_balance('BTCUSDT')
+            return render_template('trade.html')
         
         elif request.method == 'POST':
             pass
 
 
-
-        
-
-        # Handle POST request if needed
-        # return jsonify({"status": "success", "message": "Trade route accessed."}), 200

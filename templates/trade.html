@@ -23,11 +23,7 @@
         <div id="chart"></div>
     </div>
     <div>
-        <ul>
-            {% for balance in balances %}
-            <li>{{balance.asset}} : {{balance.free}} </li>
-            {% endfor %}
-        </ul>
+        {{balance}}
 
     </div>
 </div>
