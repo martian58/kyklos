@@ -103,7 +103,13 @@ def register_routes(app, db, bcrypt):
 
             client = Client(API_KEY,SECRET_KEY)
 
+
+            kyklos = Kyklos(client)
+
+            kyklos.run()
+
             kyklos = Kyklos(API_KEY,SECRET_KEY,client)
+
 
             asset_balance = kyklos.get_asset_balance('BTCUSDT')
             return render_template('trade.html')
