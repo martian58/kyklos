@@ -98,15 +98,16 @@ def register_routes(app, db, bcrypt):
         if request.method == 'GET':
             user = User.query.get(current_user.uid)
 
-            API_KEY = user.binance_api_key
-            SECRET_KEY = user.binance_secret_key
+            # API_KEY = user.binance_api_key
+            # SECRET_KEY = user.binance_secret_key
 
-            client = Client(API_KEY,SECRET_KEY)
+            # client = Client(API_KEY,SECRET_KEY)
 
-            price = client.get_symbol_ticker(symbol="BTCUSDT")
-            order_book = client.get_order_book(symbol="BTCUSDT")
+            # price = client.get_symbol_ticker(symbol="BTCUSDT")
+            # order_book = client.get_order_book(symbol="BTCUSDT")
 
-            return render_template('trade.html', depth=price, order_book=order_book)
+            # return render_template('trade.html', depth=price, order_book=order_book)
+            return render_template('trade.html')
         
         elif request.method == 'POST':
             pass
