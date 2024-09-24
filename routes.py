@@ -2,6 +2,7 @@ from flask import render_template, jsonify, request, session, redirect, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from models import User
 from binance import Client
+import json
 
 from kyklos.kyklos import Kyklos
 
@@ -111,5 +112,25 @@ def register_routes(app, db, bcrypt):
         
         elif request.method == 'POST':
             pass
+
+    @app.route('/webhook', methods=['POST', 'GET'])
+    def webhook():
+        data = request.json
+        
+        # Write the received data to 'webhook.txt'
+        with open('webhook.txt', 'a') as f:  # 'a' mode to append data
+            f.write(json.dumps(data) + '\n')  # Write the data as JSON
+        
+        # # Example action: trigger a trade, send a message, etc.
+        # if "Bullish" in data.get("message", ""):
+        #     # Implement buy logic
+        #     print("Execute Buy Order")
+        # elif "Bearish" in data.get("message", ""):
+        #     # Implement sell logic
+        #     print("Execute Sell Order")
+        
+        return jsonify(success=True)
+
+
 
 
